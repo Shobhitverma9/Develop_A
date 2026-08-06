@@ -69,7 +69,7 @@ export function HeroChaos() {
 
       {/* Floating Chaos UI Cards */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <motion.div style={{ opacity }} className="w-full h-full relative">
+        <motion.div style={{ opacity }} className="w-full h-full relative scale-50 sm:scale-75 md:scale-100 origin-center">
           {cards.map((card, i) => (
             <motion.div
               key={i}

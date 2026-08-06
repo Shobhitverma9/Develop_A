@@ -47,7 +47,7 @@ export function Services() {
           Capabilities.
         </h2>
 
-        <div className="flex flex-col md:flex-row h-[600px] gap-4 w-full">
+        <div className="flex flex-col md:flex-row h-[800px] md:h-[600px] gap-4 w-full">
           {services.map((service, index) => {
             const isActive = hoveredIndex === index;
 

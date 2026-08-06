@@ -100,22 +100,22 @@ export function Engineering() {
                 </div>
               </div>
               <div className="flex flex-1">
-                <div className="w-1/4 border-r border-border p-4 space-y-3 bg-gray-50/30">
+                <div className="hidden sm:block w-1/4 border-r border-border p-4 space-y-3 bg-gray-50/30">
                   <div className="h-8 rounded bg-primary/10 w-full"></div>
                   <div className="h-8 rounded hover:bg-muted w-full transition-colors"></div>
                   <div className="h-8 rounded hover:bg-muted w-full transition-colors"></div>
                 </div>
-                <div className="flex-1 p-6 space-y-6">
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="h-24 rounded-lg bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 p-4">
-                      <div className="text-sm text-muted-foreground">Revenue</div>
-                      <div className="text-2xl font-bold mt-2">$24,500</div>
+                <div className="flex-1 p-4 sm:p-6 space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4">
+                    <div className="h-20 sm:h-24 rounded-lg bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 p-2 sm:p-4">
+                      <div className="text-xs sm:text-sm text-muted-foreground">Revenue</div>
+                      <div className="text-lg sm:text-2xl font-bold mt-1 sm:mt-2">$24.5k</div>
                     </div>
-                    <div className="h-24 rounded-lg border border-border p-4 shadow-sm">
-                      <div className="text-sm text-muted-foreground">Active Users</div>
-                      <div className="text-2xl font-bold mt-2">1,204</div>
+                    <div className="h-20 sm:h-24 rounded-lg border border-border p-2 sm:p-4 shadow-sm">
+                      <div className="text-xs sm:text-sm text-muted-foreground">Users</div>
+                      <div className="text-lg sm:text-2xl font-bold mt-1 sm:mt-2">1,204</div>
                     </div>
-                    <div className="h-24 rounded-lg border border-border p-4 shadow-sm">
+                    <div className="hidden sm:block h-24 rounded-lg border border-border p-4 shadow-sm">
                       <div className="text-sm text-muted-foreground">Conversion</div>
                       <div className="text-2xl font-bold mt-2">8.4%</div>
                     </div>

@@ -38,7 +38,7 @@ export function UnderstandingNetwork() {
           Every successful business runs on <span className="text-primary">connected systems.</span>
         </h2>
 
-        <div className="relative w-full flex-1 flex items-center justify-center pointer-events-none mt-8">
+        <div className="relative w-full flex-1 flex items-center justify-center pointer-events-none mt-8 scale-[0.6] sm:scale-75 md:scale-100 origin-center">
           {nodes.map((node, i) => (
             <motion.div
               key={i}
