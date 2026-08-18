@@ -13,7 +13,10 @@ import {
   PieChart,
   ArrowRight,
   Pause,
-  Play
+  Play,
+  Bell,
+  MessageSquare,
+  Globe
 } from "lucide-react";
 
 const steps = [
@@ -42,6 +45,22 @@ export function AutomationWorkflow() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Click on any node to see how our engineered workflows save hundreds of hours per month.
           </p>
+
+          {/* Solved Chaos Row */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3 opacity-60">
+            <div className="px-4 py-2 bg-white/5 border border-red-500/20 text-red-400 rounded-full flex items-center gap-2 text-sm line-through decoration-red-400/50">
+              <Bell size={14} /> Missed lead notification
+            </div>
+            <div className="px-4 py-2 bg-white/5 border border-red-500/20 text-red-400 rounded-full flex items-center gap-2 text-sm line-through decoration-red-400/50">
+              <MessageSquare size={14} /> WhatsApp unread
+            </div>
+            <div className="px-4 py-2 bg-white/5 border border-red-500/20 text-red-400 rounded-full flex items-center gap-2 text-sm line-through decoration-red-400/50">
+              <FileText size={14} /> Invoice pending
+            </div>
+            <div className="px-4 py-2 bg-white/5 border border-red-500/20 text-red-400 rounded-full flex items-center gap-2 text-sm line-through decoration-red-400/50">
+              <Globe size={14} /> Website downtime
+            </div>
+          </div>
           
           <button 
             onClick={() => setIsPlaying(!isPlaying)}
@@ -54,7 +73,7 @@ export function AutomationWorkflow() {
 
         <div className="relative w-full max-w-5xl mx-auto">
           {/* Animated Connecting Line */}
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-white/10 -translate-y-1/2 hidden md:block rounded-full overflow-hidden">
+          <div className="absolute top-8 left-0 w-full h-1 bg-white/10 -translate-y-1/2 hidden md:block rounded-full overflow-hidden z-0">
              <motion.div 
                 className="h-full bg-primary"
                 initial={{ width: "0%" }}
@@ -103,8 +122,8 @@ function WorkflowNode({ step, index, isActive, onClick, isPlaying, total }: any)
   return (
     <div className="flex flex-col items-center relative group cursor-pointer" onClick={onClick}>
       <motion.div 
-        className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 relative z-10
-          ${isActive ? 'bg-primary text-white shadow-[0_0_30px_rgba(15,98,254,0.5)]' : 'bg-white/10 text-white hover:bg-white/20'}
+        className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 relative z-10 ring-[6px] ring-[#111111]
+          ${isActive ? 'bg-primary text-white shadow-[0_0_30px_rgba(15,98,254,0.5)]' : 'bg-[#1f1f1f] text-white hover:bg-[#2a2a2a]'}
         `}
         animate={isPlaying ? {
           scale: [1, 1.2, 1],

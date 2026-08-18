@@ -82,19 +82,11 @@ export function Services() {
                     {service.title}
                   </h3>
                   
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ 
-                      height: isActive ? "auto" : 0, 
-                      opacity: isActive ? 1 : 0 
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="text-muted-foreground mt-2 text-sm md:text-base leading-relaxed max-w-sm">
+                  <div className={`transition-opacity duration-300 w-64 md:w-80 ${isActive ? 'opacity-100 delay-200' : 'opacity-0 pointer-events-none'}`}>
+                    <p className="text-muted-foreground mt-2 text-sm md:text-base leading-relaxed">
                       {service.desc}
                     </p>
-                  </motion.div>
+                  </div>
                 </motion.div>
               </motion.div>
             );

@@ -15,8 +15,8 @@ export function Engineering() {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   // Wireframe to polished transition
-  const wireframeOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);
-  const polishedOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+  const wireframeOpacity = useTransform(scrollYProgress, [0.15, 0.35], [1, 0]);
+  const polishedOpacity = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
 
   const stack = [
     { name: "Next.js", icon: <Layers size={20} /> },
@@ -29,10 +29,10 @@ export function Engineering() {
     <section
       ref={container}
       id="Engineering"
-      className="relative min-h-[200vh] w-full flex flex-col items-center pt-24"
+      className="relative w-full flex flex-col items-center py-24 md:py-32"
     >
       <motion.div
-        className="sticky top-[20vh] w-full max-w-6xl px-6 flex flex-col md:flex-row items-center gap-16 z-10"
+        className="w-full max-w-6xl px-6 flex flex-col md:flex-row items-center gap-16 z-10"
         style={{ opacity, y }}
       >
         <div className="flex-1 space-y-8">

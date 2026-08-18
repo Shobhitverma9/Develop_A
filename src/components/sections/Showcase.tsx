@@ -46,16 +46,16 @@ export function Showcase() {
     <section
       ref={container}
       id="Showcase"
-      className="relative min-h-[200vh] w-full pt-32 pb-32 bg-gray-50 overflow-hidden"
+      className="relative min-h-[150vh] w-full pt-16 pb-32 bg-gray-50 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 mb-24 sticky top-[10vh] z-20">
+      <div className="max-w-7xl mx-auto px-6 mb-16 z-20">
         <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground">
           Outcomes, <br />
           <span className="text-muted-foreground">not just interfaces.</span>
         </h2>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 z-10 mt-[20vh]">
+      <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 z-10 mt-12">
         {projects.map((project, i) => (
           <ShowcaseCard 
             key={i} 

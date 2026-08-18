@@ -29,15 +29,6 @@ const testimonials = [
 ];
 
 export function Testimonials() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    if (carouselRef.current) {
-      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-    }
-  }, []);
-
   return (
     <section id="Testimonials" className="py-32 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16">
@@ -46,46 +37,56 @@ export function Testimonials() {
         </h2>
       </div>
 
-      <motion.div ref={carouselRef} className="cursor-grab active:cursor-grabbing overflow-hidden">
+      <div className="flex overflow-hidden">
         <motion.div 
-          drag="x" 
-          dragConstraints={{ right: 0, left: -width }} 
-          className="flex gap-8 px-6 pb-8 md:px-12 w-max"
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
         >
-          {testimonials.map((test, i) => (
-            <motion.div 
-              key={i}
-              className="w-[85vw] md:w-[600px] bg-white border border-border p-8 md:p-12 rounded-3xl shadow-sm flex flex-col justify-between shrink-0"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div>
-                <Quote className="text-primary/20 mb-6" size={48} />
-                <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground/90">
-                  "{test.quote}"
-                </p>
-              </div>
-
-              <div className="mt-12 flex items-end justify-between border-t border-border/50 pt-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground">
-                    {test.author.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground">{test.author}</h4>
-                    <p className="text-sm text-muted-foreground">{test.role}, {test.company}</p>
-                  </div>
-                </div>
-                
-                <div className="text-right">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Impact</p>
-                  <p className="font-bold text-primary">{test.metric}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* First Set */}
+          <div className="flex gap-6 pr-6">
+            {testimonials.map((test, i) => (
+              <TestimonialCard key={`first-${i}`} test={test} />
+            ))}
+          </div>
+          {/* Second Set (Duplicate for seamless loop) */}
+          <div className="flex gap-6 pr-6">
+            {testimonials.map((test, i) => (
+              <TestimonialCard key={`second-${i}`} test={test} />
+            ))}
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
+  );
+}
+
+function TestimonialCard({ test }: { test: any }) {
+  return (
+    <div className="w-[85vw] md:w-[480px] bg-white border border-border p-6 md:p-8 rounded-3xl shadow-sm flex flex-col justify-between shrink-0 hover:-translate-y-1 transition-transform duration-300">
+      <div>
+        <Quote className="text-primary/20 mb-4" size={32} />
+        <p className="text-lg md:text-xl font-medium leading-relaxed text-foreground/90">
+          "{test.quote}"
+        </p>
+      </div>
+
+      <div className="mt-8 flex items-end justify-between border-t border-border/50 pt-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground text-sm">
+            {test.author.charAt(0)}
+          </div>
+          <div>
+            <h4 className="font-bold text-foreground text-sm">{test.author}</h4>
+            <p className="text-xs text-muted-foreground">{test.role}, {test.company}</p>
+          </div>
+        </div>
+        
+        <div className="text-right">
+          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Impact</p>
+          <p className="font-bold text-primary text-sm">{test.metric}</p>
+        </div>
+      </div>
+    </div>
   );
 }
