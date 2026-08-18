@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-2">
             <a href="#" className="mb-6 inline-block">
-              <img src="/mould.png" alt="Uddhav Web Solutions Logo" className="h-12 w-auto object-contain" />
+              <img src="/mould.png" alt="Uddhav Web Solutions Logo" className="h-20 w-auto object-contain" />
             </a>
             <p className="text-white/60 max-w-sm text-sm leading-relaxed mb-8">
               We engineer scalable digital experiences and intelligent automation systems for businesses that demand high performance.
