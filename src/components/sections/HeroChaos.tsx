@@ -58,7 +58,7 @@ export function HeroChaos() {
           {/* Logo Strip (Moved under CTA) */}
           <div className="w-full pt-6 border-t border-border/60">
             <p className="text-center text-sm text-muted-foreground font-medium mb-6 uppercase tracking-wider">
-              Trusted by growing brands
+              Opted by growing brands
             </p>
             <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 transition-opacity duration-500 *:opacity-60 hover:*:opacity-100 *:grayscale *:mix-blend-multiply dark:*:invert dark:*:mix-blend-screen">
               <div className="w-[80px] h-[32px] md:w-[120px] md:h-[40px] flex items-center justify-center">
