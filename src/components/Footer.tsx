@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-2">
             <a href="#" className="mb-6 inline-block">
-              <img src="/mould.png" alt="Uddhav Web Solutions Logo" className="h-20 w-auto object-contain" />
+              <img src="/mouldNavinverted.png" alt="Mould Logo" className="h-16 w-auto object-contain" />
             </a>
             <p className="text-white/60 max-w-sm text-sm leading-relaxed mb-8">
               We engineer scalable digital experiences and intelligent automation systems for businesses that demand high performance.
@@ -48,8 +48,8 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-primary" />
-                <a href="mailto:hello@uddhavwebsolutions.com" className="hover:text-primary transition-colors">
-                  hello@uddhavwebsolutions.com
+                <a href="mailto:contact@mould.studio" className="hover:text-primary transition-colors">
+                  contact@mould.studio
                 </a>
               </li>
               <li className="text-white/60 mt-4 leading-relaxed">
@@ -61,7 +61,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
-          <p>© {currentYear} Uddhav Web Solutions. All rights reserved.</p>
+          <p>© {currentYear} Mould. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

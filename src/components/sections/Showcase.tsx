@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -72,10 +72,18 @@ export function Showcase() {
 function ShowcaseCard({ project, index, scrollYProgress }: any) {
   const y = useTransform(scrollYProgress, [0, 1], project.yOffset);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <motion.div
-      style={{ y: y as any }}
+      style={{ y: isMobile ? 0 : y as any }}
       className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group ${project.color} shadow-xl`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

@@ -32,7 +32,7 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <img src="/mouldNav.png" alt="Uddhav Web Solutions Logo" className="h-12 w-auto object-contain" />
+            <img src="/mouldNav.png" alt="Mould Logo" className="h-12 w-auto object-contain" />
           </a>
 
           {/* Desktop Links */}

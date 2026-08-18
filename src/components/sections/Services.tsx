@@ -47,7 +47,7 @@ export function Services() {
           Capabilities.
         </h2>
 
-        <div className="flex flex-col md:flex-row h-[800px] md:h-[600px] gap-4 w-full">
+        <div className="flex flex-col md:flex-row h-[1000px] md:h-[600px] gap-4 w-full">
           {services.map((service, index) => {
             const isActive = hoveredIndex === index;
 
@@ -74,7 +74,7 @@ export function Services() {
                 </div>
 
                 <motion.div 
-                  className="mt-16 flex-col flex"
+                  className="mt-12 md:mt-16 flex-col flex"
                   initial={false}
                   animate={{ opacity: isActive ? 1 : 0.5 }}
                 >

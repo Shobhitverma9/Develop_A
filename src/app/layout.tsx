@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Uddhav Web Solutions | Premium Digital Experiences",
+  title: "Mould | Premium Digital Experiences",
   description: "We replace repetitive work with intelligent systems. We build software that businesses rely on every day.",
 };
 

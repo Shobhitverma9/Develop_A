@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MessageCircle, Check, Zap, ArrowRight, LayoutTemplate, Sparkles, CreditCard, Mail } from "lucide-react";
 
@@ -15,8 +15,16 @@ export function FeatureBento() {
   const y2 = useTransform(scrollYProgress, [0, 1], [150, -150]);
   const y3 = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
-    <section ref={container} id="Capabilities" className="py-32 bg-background relative overflow-hidden">
+    <section ref={container} id="Capabilities" className="py-32 bg-background relative overflow-hidden z-20">
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground max-w-2xl">
           We don't just build. <br />
@@ -31,7 +39,7 @@ export function FeatureBento() {
         
         {/* Card 1: WhatsApp Agent (Tall) */}
         <motion.div 
-          style={{ y: y1 }}
+          style={{ y: isMobile ? 0 : y1 }}
           className="md:row-span-2 md:col-span-1 bg-gray-50 rounded-3xl border border-border p-8 flex flex-col relative overflow-hidden group"
         >
           <div className="relative z-10 mb-8">
@@ -71,7 +79,7 @@ export function FeatureBento() {
 
         {/* Card 2: Zapier Replacement (Wide) */}
         <motion.div 
-          style={{ y: y2 }}
+          style={{ y: isMobile ? 0 : y2 }}
           className="md:col-span-2 bg-[#111111] text-white rounded-3xl border border-white/10 p-8 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden group"
         >
           <div className="relative z-10 max-w-sm mb-8 sm:mb-0">
@@ -111,7 +119,7 @@ export function FeatureBento() {
 
         {/* Card 3: Web Design (Wide) */}
         <motion.div 
-          style={{ y: y3 }}
+          style={{ y: isMobile ? 0 : y3 }}
           className="md:col-span-2 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl border border-border p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden group"
         >
           <div className="relative z-10 max-w-sm flex-1 flex flex-col justify-center">

@@ -20,7 +20,7 @@ const testimonials = [
     metric: "40% Time Saved",
   },
   {
-    quote: "Uddhav Web Solutions understood our business better than some of our own employees. Their architecture scales effortlessly.",
+    quote: "Mould understood our business better than some of our own employees. Their architecture scales effortlessly.",
     author: "Aditi V.",
     role: "Founder",
     company: "EventCore",
