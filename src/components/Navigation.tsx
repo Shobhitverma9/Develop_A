@@ -32,7 +32,11 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <img src="/mouldNavinverted.png" alt="Mould Logo" className="h-12 w-auto object-contain" />
+            <img 
+              src={scrolled ? "/mouldNav.png" : "/mouldNavinverted.png"} 
+              alt="Mould Logo" 
+              className="h-12 w-auto object-contain transition-all duration-300" 
+            />
           </a>
 
           {/* Desktop Links */}
@@ -42,7 +46,11 @@ export function Navigation() {
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    scrolled 
+                      ? 'text-[#2d1b2e]/60 hover:text-[#2d1b2e]' 
+                      : 'text-white/60 hover:text-white'
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -53,7 +61,11 @@ export function Navigation() {
                 e.preventDefault();
                 window.dispatchEvent(new Event('open-contact'));
               }}
-              className="flex items-center gap-2 border border-white/20 hover:border-white/40 text-white/90 hover:text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all active:scale-95 group"
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all active:scale-95 group border ${
+                scrolled 
+                  ? 'border-black/20 hover:border-black/40 text-black/90 hover:text-black' 
+                  : 'border-white/20 hover:border-white/40 text-white/90 hover:text-white'
+              }`}
             >
               Demo
               <svg className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -65,7 +77,9 @@ export function Navigation() {
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-foreground p-2 -mr-2"
+            className={`md:hidden p-2 -mr-2 transition-colors duration-300 ${
+              scrolled ? 'text-[#2d1b2e]' : 'text-white'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

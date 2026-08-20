@@ -102,7 +102,7 @@ export function HeroChaos() {
           </div>
 
           {/* Scroll Down */}
-          <div className="flex items-center gap-4 text-white/50 hover:text-white transition-colors cursor-pointer group">
+          <div className="hidden md:flex items-center gap-4 text-white/50 hover:text-white transition-colors cursor-pointer group">
             <span className="text-sm">Scroll to explore</span>
             <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/50 transition-colors">
               <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
