@@ -16,9 +16,9 @@ export function Navigation() {
   }, []);
 
   const links = [
-    { name: "Services", href: "#Services" },
-    { name: "Process", href: "#ProcessTimeline" },
-    { name: "Outcomes", href: "#Showcase" },
+    { name: "Work", href: "#Showcase" },
+    { name: "Services", href: "#FeatureBento" },
+    { name: "Contact", href: "#TrustAndCTA" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <img src="/mouldNav.png" alt="Mould Logo" className="h-12 w-auto object-contain" />
+            <img src="/mouldNavinverted.png" alt="Mould Logo" className="h-12 w-auto object-contain" />
           </a>
 
           {/* Desktop Links */}
@@ -48,12 +48,19 @@ export function Navigation() {
                 </a>
               ))}
             </div>
-            <a 
-              href="#TrustAndCTA" 
-              className="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-transform active:scale-95 shadow-lg shadow-primary/20"
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new Event('open-contact'));
+              }}
+              className="flex items-center gap-2 border border-white/20 hover:border-white/40 text-white/90 hover:text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all active:scale-95 group"
             >
-              Start Project
-            </a>
+              Demo
+              <svg className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
+            </button>
           </div>
 
           {/* Mobile Toggle */}

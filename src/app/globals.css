@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Explicit source globs — auto-detection missed newly added directories. */
+@source "../components/**/*.{ts,tsx}";
+@source "../app/**/*.{ts,tsx}";
+
 :root {
   --background: #FCFCFB;
   --foreground: #111111;
@@ -10,6 +14,36 @@
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
   --border: #e2e8f0;
+
+  /* ---- Visual rhyme: one ink hue, one paper hue, fixed alpha steps ----
+     Every surface, hairline and muted label on the site is a tint of the
+     SAME hue rather than an ad-hoc gray. Light sections tint the ink,
+     dark sections tint the paper. Same ladder, mirrored. */
+  --ink: #0C1222;
+  --ink-deep: #070B14;
+  --ink-raised: #151C2C;
+  --ink-2: color-mix(in srgb, var(--ink) 2%, transparent);
+  --ink-4: color-mix(in srgb, var(--ink) 4%, transparent);
+  --ink-8: color-mix(in srgb, var(--ink) 8%, transparent);
+  --ink-12: color-mix(in srgb, var(--ink) 12%, transparent);
+  --ink-24: color-mix(in srgb, var(--ink) 24%, transparent);
+  --ink-40: color-mix(in srgb, var(--ink) 40%, transparent);
+  --ink-64: color-mix(in srgb, var(--ink) 64%, transparent);
+
+  --paper: #FFFFFF;
+  --paper-2: color-mix(in srgb, var(--paper) 2%, transparent);
+  --paper-4: color-mix(in srgb, var(--paper) 4%, transparent);
+  --paper-8: color-mix(in srgb, var(--paper) 8%, transparent);
+  --paper-12: color-mix(in srgb, var(--paper) 12%, transparent);
+  --paper-24: color-mix(in srgb, var(--paper) 24%, transparent);
+  --paper-40: color-mix(in srgb, var(--paper) 40%, transparent);
+  --paper-64: color-mix(in srgb, var(--paper) 64%, transparent);
+
+  /* Concentric radii: an inner pane inset by --inset inside a --r-frame
+     card must use --r-inner so the two curves stay parallel. */
+  --r-frame: 22px;
+  --r-inner: 14px;
+  --inset: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,7 +71,40 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
 
+  --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
+  --color-ink-raised: var(--ink-raised);
+  --color-ink-2: var(--ink-2);
+  --color-ink-4: var(--ink-4);
+  --color-ink-8: var(--ink-8);
+  --color-ink-12: var(--ink-12);
+  --color-ink-24: var(--ink-24);
+  --color-ink-40: var(--ink-40);
+  --color-ink-64: var(--ink-64);
+
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-4: var(--paper-4);
+  --color-paper-8: var(--paper-8);
+  --color-paper-12: var(--paper-12);
+  --color-paper-24: var(--paper-24);
+  --color-paper-40: var(--paper-40);
+  --color-paper-64: var(--paper-64);
+
+  --radius-frame: var(--r-frame);
+  --radius-inner: var(--r-inner);
+
   --font-sans: var(--font-inter);
+}
+
+/* Hairline borders drawn as a ring so they never affect layout and read
+   identically on light and dark sections. */
+@utility hairline {
+  box-shadow: 0 0 0 1px var(--ink-8), 0 2px 2px -1px var(--ink-4);
+}
+
+@utility hairline-dark {
+  box-shadow: 0 0 0 1px var(--paper-8);
 }
 
 html.lenis, html.lenis body {

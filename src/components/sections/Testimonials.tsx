@@ -1,92 +1,105 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "They didn't just build a website, they engineered a system that completely automated our lead qualification. We're closing 30% more deals with the same team size.",
-    author: "Rahul M.",
-    role: "Director of Operations",
-    company: "ISKCON",
-    metric: "+30% Close Rate",
+    id: 1,
+    content: [
+      "I can't believe how simple it is to work with Mould. So many features out of the box and an amazing team behind it.",
+      "Client is happy, client's clients are onboarded and happy \uD83E\uDD42 special thanks to the team for helping throughout the process \uD83D\uDE4F"
+    ],
+    author: {
+      name: "Alessia Sannazzaro",
+      title: "Code & Wander",
+      avatar: "https://i.pravatar.cc/100?img=1"
+    }
   },
   {
-    quote: "The patient portal they developed replaced three separate outdated systems we were using. It's secure, fast, and the patients actually love using it.",
-    author: "Dr. Sharma",
-    role: "Chief Medical Officer",
-    company: "HealthConnect",
-    metric: "40% Time Saved",
+    id: 2,
+    content: [
+      "We're loving Mould. We've walked away from expensive bloated SaaS subscriptions, and have replaced them entirely.",
+      "Our team can now focus on developing our core value offering, rather than wasting time building table-stakes features, and we don't need experts in each tool to get value from them."
+    ],
+    author: {
+      name: "Bryan Watson",
+      title: "Founder and CEO, Ovida",
+      avatar: "https://i.pravatar.cc/100?img=11"
+    }
   },
   {
-    quote: "Mould understood our business better than some of our own employees. Their architecture scales effortlessly.",
-    author: "Aditi V.",
-    role: "Founder",
-    company: "EventCore",
-    metric: "0 Downtime",
-  },
+    id: 3,
+    content: [
+      "Thinking about launching a complex web app or automated system?",
+      "Mould is your team.",
+      "A CRM, payments, subscriptions, email automation, gated content, segmentation, etc... Mould builds great features and functionality at an extremely fair price."
+    ],
+    author: {
+      name: "Justin Welsh",
+      title: "Creator and Solopreneur",
+      avatar: "https://i.pravatar.cc/100?img=12"
+    }
+  }
 ];
 
 export function Testimonials() {
   return (
-    <section id="Testimonials" className="py-32 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-          Built for <span className="text-primary">businesses that rely on software.</span>
-        </h2>
-      </div>
+    <section id="Testimonials" className="w-full bg-[#fafafa] py-16 md:py-20 relative font-sans">
+      <div className="max-w-[1400px] mx-auto px-6">
+        
+        {/* Massive Centered Quote Headline */}
+        <div className="flex justify-center mb-8 md:mb-10">
+          <h2 
+            className="max-w-4xl text-center text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-[#2d1b2e]"
+            style={{ fontFamily: "var(--font-outfit), sans-serif" }}
+          >
+            "Everything you need to build custom software without the overhead..."
+          </h2>
+        </div>
 
-      <div className="flex overflow-hidden">
-        <motion.div 
-          className="flex w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
-        >
-          {/* First Set */}
-          <div className="flex gap-6 pr-6">
-            {testimonials.map((test, i) => (
-              <TestimonialCard key={`first-${i}`} test={test} />
-            ))}
-          </div>
-          {/* Second Set (Duplicate for seamless loop) */}
-          <div className="flex gap-6 pr-6">
-            {testimonials.map((test, i) => (
-              <TestimonialCard key={`second-${i}`} test={test} />
-            ))}
-          </div>
-        </motion.div>
+        {/* 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {testimonials.map((testimonial, i) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
+              className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.02)] p-6 lg:p-8 flex flex-col h-full"
+            >
+              
+              {/* Testimonial Text Paragraphs */}
+              <div className="flex-1 space-y-4 mb-8">
+                {testimonial.content.map((paragraph, index) => (
+                  <p key={index} className="text-[#2d1b2e]/80 text-[15px] leading-[1.6]">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              {/* Author Block */}
+              <div className="flex items-center gap-4 mt-auto pt-6 border-t border-black/[0.04]">
+                <img
+                  src={testimonial.author.avatar}
+                  alt={testimonial.author.name}
+                  className="w-12 h-12 rounded-full object-cover bg-gray-100 shrink-0"
+                />
+                <div className="flex flex-col">
+                  <span className="font-bold text-[#2d1b2e] text-[15px]">
+                    {testimonial.author.name}
+                  </span>
+                  <span className="text-[#2d1b2e]/50 text-[13px]">
+                    {testimonial.author.title}
+                  </span>
+                </div>
+              </div>
+
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
-  );
-}
-
-function TestimonialCard({ test }: { test: any }) {
-  return (
-    <div className="w-[85vw] md:w-[480px] bg-white border border-border p-6 md:p-8 rounded-3xl shadow-sm flex flex-col justify-between shrink-0 hover:-translate-y-1 transition-transform duration-300">
-      <div>
-        <Quote className="text-primary/20 mb-4" size={32} />
-        <p className="text-lg md:text-xl font-medium leading-relaxed text-foreground/90">
-          "{test.quote}"
-        </p>
-      </div>
-
-      <div className="mt-8 flex items-end justify-between border-t border-border/50 pt-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground text-sm">
-            {test.author.charAt(0)}
-          </div>
-          <div>
-            <h4 className="font-bold text-foreground text-sm">{test.author}</h4>
-            <p className="text-xs text-muted-foreground">{test.role}, {test.company}</p>
-          </div>
-        </div>
-        
-        <div className="text-right">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Impact</p>
-          <p className="font-bold text-primary text-sm">{test.metric}</p>
-        </div>
-      </div>
-    </div>
   );
 }

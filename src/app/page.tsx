@@ -2,12 +2,14 @@ import { HeroChaos } from "@/components/sections/HeroChaos";
 import { Engineering } from "@/components/sections/Engineering";
 import { Showcase } from "@/components/sections/Showcase";
 import { FeatureBento } from "@/components/sections/FeatureBento";
+import { ProcessStrip } from "@/components/sections/ProcessStrip";
 import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { TrustAndCTA } from "@/components/sections/TrustAndCTA";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SceneManager } from "@/components/SceneManager";
+import { ContactModal } from "@/components/ContactModal";
 
 export default function Home() {
   return (
@@ -21,14 +23,16 @@ export default function Home() {
       <div className="relative z-10 w-full flex flex-col">
         <HeroChaos />
         <FeatureBento />
+        <ProcessStrip />
         {/* <Engineering /> */}
         <Showcase />
-        <Services />
+        {/* <Services /> */}
         <Testimonials />
         <TrustAndCTA />
       </div>
 
       <Footer />
+      <ContactModal />
     </main>
   );
 }

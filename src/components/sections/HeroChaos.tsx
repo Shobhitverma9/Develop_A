@@ -1,86 +1,116 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export function HeroChaos() {
-  const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end start"],
-  });
-
-  // Fade out chaos elements as we scroll down
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
-
-
-
   return (
-    <section
-      ref={container}
-      id="HeroChaos"
-      className="relative min-h-[125vh] w-full flex flex-col items-center justify-start pt-[15vh] pb-16"
-    >
-      <motion.div
-        className="sticky top-24 flex flex-col items-center z-10 w-full max-w-4xl px-6 text-center"
-        style={{ opacity, y }}
-      >
-        <motion.div
+    <section id="HeroChaos" className="relative w-full min-h-[90vh] bg-[#070707] overflow-hidden flex flex-col justify-center pt-24 pb-12">
+      
+      {/* Background Graphic */}
+      <div className="absolute inset-y-0 right-0 z-0 flex items-center justify-end w-full md:w-[60%] lg:w-[50%] opacity-90 mix-blend-screen pointer-events-none pr-0 lg:pr-12">
+        <motion.img 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          src="/hero-abstract.jpg" 
+          alt="Abstract 3D Shape" 
+          className="w-[120%] md:w-full h-[70vh] md:h-[90vh] lg:h-screen object-contain object-right md:object-center"
+        />
+      </div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 h-full flex flex-col justify-between flex-1">
+        
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col justify-center max-w-3xl pt-8 md:pt-16 lg:pt-20">
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-[1.1] mb-6 max-w-2xl"
+            style={{ fontFamily: "var(--font-outfit), sans-serif" }}
+          >
+            We mould ideas into <br className="hidden sm:block" />
+            <span className="text-[#3b82f6]">intelligent</span> <br className="hidden sm:block" />
+            experiences.
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-base md:text-lg text-white/60 max-w-md mb-8 leading-relaxed font-light"
+          >
+            A design and automation studio building digital products, brands and systems that scale.
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          >
+            <button 
+              onClick={() => window.dispatchEvent(new Event('open-contact'))}
+              className="bg-[#ff4500] hover:bg-[#e63e00] text-white font-medium text-sm px-6 py-3 rounded-full transition-all active:scale-95 flex items-center gap-2"
+            >
+              Demo 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </button>
+            <a href="#FeatureBento" className="text-white hover:text-white/80 font-medium text-sm px-4 py-3 flex items-center gap-2 transition-colors group">
+              Our Services 
+              <svg className="transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Floating Strategy Text (Right Side) */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="absolute right-6 bottom-16 md:bottom-24 max-w-[340px] hidden lg:block pl-5 pr-3 py-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10"
+        >
+          <div className="flex items-center gap-4 text-white text-sm font-medium mb-3">
+            <span>Design</span>
+            <span className="w-2 h-2 rounded-full bg-[#ff4500] block flex-shrink-0" />
+            <span>Automation</span>
+            <span className="w-2 h-2 rounded-full bg-[#3b82f6] block flex-shrink-0" />
+            <span>Strategy</span>
+          </div>
+          <p className="text-white/70 text-xs leading-relaxed">
+            We help ambitious businesses streamline operations, elevate their brand, and build digital products that make impact.
+          </p>
+        </motion.div>
+
+        {/* Footer Bar */}
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center"
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          className="w-full mt-16 md:mt-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 md:gap-0"
         >
-          {/* Trust Badge */}
-          <div className="flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-foreground/80 backdrop-blur-sm">
-            <div className="flex gap-1 text-yellow-500">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              ))}
-            </div>
-            Trusted by 50+ businesses
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-4">
-            Growing your business <br className="hidden sm:block" />
-            <span className="text-muted-foreground">shouldn't feel chaotic.</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-            We engineer high-performance web applications and automated workflows that scale with your agency.
-          </p>
-
-          <button className="min-h-[44px] bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-lg flex items-center justify-center transition-transform active:scale-95 text-lg shadow-lg shadow-primary/20 mb-16">
-            Book a Demo
-          </button>
-
-          {/* Logo Strip (Moved under CTA) */}
-          <div className="w-full pt-6 border-t border-border/60">
-            <p className="text-center text-sm text-muted-foreground font-medium mb-6 uppercase tracking-wider">
-              Opted by growing brands
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 transition-opacity duration-500 *:opacity-60 hover:*:opacity-100 *:grayscale *:mix-blend-multiply dark:*:invert dark:*:mix-blend-screen">
-              <div className="w-[80px] h-[32px] md:w-[120px] md:h-[40px] flex items-center justify-center">
-                <img src="/OIP (3).jpg" alt="ISKCON" className="max-w-full max-h-full object-contain" />
-              </div>
-              <div className="w-[80px] h-[32px] md:w-[120px] md:h-[40px] flex items-center justify-center">
-                <img src="/Travergetic-Final-Logo-Original.png" alt="Travergetic" className="max-w-full max-h-full object-contain" />
-              </div>
-              <div className="w-[80px] h-[32px] md:w-[120px] md:h-[40px] flex items-center justify-center">
-                <img src="/ambm-logo.png" alt="AirMBM" className="max-w-full max-h-full object-contain" />
-              </div>
-              <div className="w-[80px] h-[32px] md:w-[120px] md:h-[40px] flex items-center justify-center">
-                <img src="/vt-logo-retina-black.png" alt="Vedic Travel" className="max-w-full max-h-full object-contain" />
-              </div>
-              <div className="w-[80px] h-[32px] md:w-[120px] md:h-[40px] flex items-center justify-center">
-                <img src="/delta-sports-company-120x120.png" alt="Delta Sports" className="max-w-full max-h-full object-contain" />
-              </div>
+          {/* Logos */}
+          <div>
+            <p className="text-xs text-white/40 mb-6">Trusted by forward-thinking teams</p>
+            <div className="flex flex-wrap items-center gap-6 md:gap-10 opacity-60 *:brightness-0 *:invert hover:*:opacity-100 *:transition-opacity">
+              <img src="/Igzblogo.webp" alt="ISKCON Logo" className="h-10 md:h-12 w-auto object-contain" />
+              <img src="/Travergetic-Final-Logo-Original.png" alt="Logo 2" className="h-5 md:h-6 w-auto object-contain" />
+              <img src="/ambm-logo.png" alt="Logo 3" className="h-5 md:h-6 w-auto object-contain" />
+              <img src="/vt-logo-retina-black.png" alt="Logo 4" className="h-5 md:h-6 w-auto object-contain" />
             </div>
           </div>
 
+          {/* Scroll Down */}
+          <div className="flex items-center gap-4 text-white/50 hover:text-white transition-colors cursor-pointer group">
+            <span className="text-sm">Scroll to explore</span>
+            <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/50 transition-colors">
+              <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+          </div>
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   );
 }
